@@ -1,64 +1,45 @@
-import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { ModeToggle } from "./components/mode-toggle"
-import {GridPattern} from './components/magicui/animated-grid-pattern'
-// import {ShimmerButton} from './components/magicui/shimmer-button'
+
+// import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Web/Home'
+import Login from './pages/Web/Login'
+import Register from './pages/Web/Register'
+import Adminlayout from './layout/Adminlayout'
+import AdminDashboard from './pages/Admin/AdminDashboard'
+import NotFound from './pages/Web/Notfound'
+import Weblayout from './layout/Weblayout'
+import AdminUsers from './pages/Admin/AdminUsers'
+import EventTable from './pages/Web/EventTable'
+
+
+
+
 const App = () => {
-  return (
-    <div>
-      
-      <ModeToggle/>
-      <GridPattern/>
-       <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Login</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Login</DialogTitle>
-          {/* <DialogDescription>
-            Make changes to your profile here. 
-          </DialogDescription> */}
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              UserName
-            </Label>
-            <Input
-              id="name"
-              // defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Password
-            </Label>
-            <Input
-              id="password"
-              // defaultValue="@peduarte"
-              className="col-span-3"
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Login</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-    </div>
-  )
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<Weblayout/>}>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/login' element={<Login/>} />
+                        <Route path='/register' element={<Register/>} />
+                         <Route path='*' element={<NotFound />} />
+                         <Route path='/eventtable' element={<EventTable/>}/>
+                    </Route>
+
+
+
+                    <Route element={<Adminlayout/>}>
+                        <Route path='/admin/dashboard' element={<AdminDashboard/>} />
+                        <Route path='/admin/users' element={<AdminUsers/>} />
+                    </Route>
+
+                </Routes>
+            </BrowserRouter>
+
+
+        </>
+    )
 }
 
-export default App;
+export default App
