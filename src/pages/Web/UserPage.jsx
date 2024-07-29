@@ -1,6 +1,4 @@
 
-
-
 import { useState } from 'react';
 import {
   Table,
@@ -29,7 +27,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-const AdminUsers = () => {
+const UserPage = () => {
   const [open, setOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
@@ -177,4 +175,4 @@ const AdminUsers = () => {
   );
 };
 
-export default AdminUsers;
+export default UserPage;
